@@ -14,7 +14,7 @@ variable "location" {
 variable "resource_group_name" {
   type = string
   description = "This variable defines the Resource Group"
-  default = "terraform-aks"
+  default = "ct-entry-platform"
 }
 
 # Azure AKS Environment Name
