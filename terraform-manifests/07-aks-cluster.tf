@@ -9,13 +9,13 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
 
   default_node_pool {
     name       = "systempool"
-    vm_size    = "Standard_DS2_v2"
+    vm_size    = "Standard_B2S"
     orchestrator_version = data.azurerm_kubernetes_service_versions.current.latest_version
     availability_zones   = [1, 2, 3]
     enable_auto_scaling  = true
     max_count            = 3
     min_count            = 1
-    os_disk_size_gb      = 30
+    os_disk_size_gb      = 15
     type           = "VirtualMachineScaleSets"
     node_labels = {
       "nodepool-type" = "system"
@@ -53,10 +53,10 @@ role_based_access_control {
 }  
 
 # Windows Admin Profile
-windows_profile {
-  admin_username            = var.windows_admin_username
-  admin_password            = var.windows_admin_password
-}
+# windows_profile {
+#   admin_username            = var.windows_admin_username
+#   admin_password            = var.windows_admin_password
+# }
 
 # Linux Profile
 linux_profile {
